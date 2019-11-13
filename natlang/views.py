@@ -13,5 +13,5 @@ def classify_text(text):
     # LanguageServiceClient(credentials=API_KEY).
     client = language.LanguageServiceClient()
     document = types.Document(content=text, type=enums.Document.Type.PLAIN_TEXT)
-    categories = client.classify_text(document=document).categories
+    categories = client.classify_text(document=document)
     return categories

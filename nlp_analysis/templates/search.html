@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block title %}
+<title>Upload Text</title>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="search-bar">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <form action="/search/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                    <input type="submit" value="submit">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<!-- Show results -->
+{% if categories %}
+<div class="container" id="results-categories">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            {% for category in categories %}
+                <p>
+                    <li>{{ category }}</li>
+                </p>
+            {% endfor %}
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
