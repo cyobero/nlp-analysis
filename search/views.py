@@ -8,7 +8,6 @@ from natlang.views import classify_text
 # Create your views here.
 def search(request):
     # store any errors here
-    errors = []
     # If request is a POST then we need to process the form data.
     if request.method == 'POST':
         # Create a form instance and populate it with data
