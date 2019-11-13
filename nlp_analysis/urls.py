@@ -18,10 +18,12 @@ from django.contrib import admin
 from search.views import search
 from django.conf import settings
 from django.conf.urls.static import static
+from .views import home
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^search/$', search, name='search'),
+    url(r'^$', home, name='home')
 ]
 
 if settings.DEBUG:
