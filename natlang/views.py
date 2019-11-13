@@ -15,3 +15,10 @@ def classify_text(text):
     document = types.Document(content=text, type=enums.Document.Type.PLAIN_TEXT)
     categories = client.classify_text(document=document)
     return categories
+
+
+def sentiment(text):
+    client = language.LanguageServiceClient()
+    document = types.Document(content=text, type=enums.Document.Type.PLAIN_TEXT)
+    results = client.analyze_sentiment(document).document_sentiment
+    return results

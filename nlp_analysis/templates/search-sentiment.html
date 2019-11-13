@@ -1,27 +1,28 @@
-{% extends 'index.html' %}
+{% extends 'search.html' %}
 {% load staticfiles %}
 
 {% block title %}
-<title>Upload Text</title>
+<title>sentimetn</title>
 {% endblock %}
 
 {% block navbar-active %}
 <li class="nav-item">
     <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
 </li>
-<li class="nav-item active">
-    <a class="nav-link" href="#">Classifier</a>
-</li>
 <li class="nav-item">
+    <a class="nav-link" href="{% url 'search' %}">Classifier</a>
+</li>
+<li class="nav-item active">
     <a class="nav-link" href="#">Sentiment</a>
 </li>
 {% endblock %}
+
 {% block content %}
 <div class="container" id="search-bar">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <form action="/search/" method="post">
+            <form action="/sentiment/" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     {{ form.as_p }}
@@ -32,22 +33,8 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-
-<!-- Show results -->
-{% if categories %}
-<div class="container" id="results-categories">
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            {% for category in categories %}
-            <p>
-            <li>{{ category }}</li>
-            </p>
-            {% endfor %}
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-</div>
+{% if results %}
+<p>score: {{ results.score }}</p>
+<p>magnitude: {{ results.magnitude }}</p>
 {% endif %}
-
 {% endblock %}

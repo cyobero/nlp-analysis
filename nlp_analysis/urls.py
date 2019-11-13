@@ -19,11 +19,13 @@ from search.views import search
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import home
+from sentiment.views import get_sentiment
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^search/$', search, name='search'),
-    url(r'^$', home, name='home')
+    url(r'^$', home, name='home'),
+    url(r'^sentiment/$', get_sentiment, name='sentiment')
 ]
 
 if settings.DEBUG:
